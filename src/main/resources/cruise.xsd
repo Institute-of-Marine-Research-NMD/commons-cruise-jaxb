@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+ Påbegynt xsd for reference, denne må utvides ganske mye
+-->
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.imr.no/formats/nmdcruise/v1"
+           xmlns="http://www.imr.no/formats/nmdcruise/v1">
+    <!--
+            Root element
+    -->
+    <xs:element name="cruises" type="CruisesType" />
+
+    <!--
+            Cruises type.
+    -->
+    <xs:complexType name="CruisesType">
+        <xs:sequence>
+            <xs:element name="cruise" type="CruiseType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="CruiseType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="missiontype" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="startyear" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="missionNumber" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="startTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="stopTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="specificArea" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="purpose" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lang" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="comments" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="reportUrl" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="missionStatus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="cruiseCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="beiCruiseNo" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="originalSurveyNo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="cruiseLeader" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="departurePort" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="arrivalPort" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="seaAreas" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="platformInfo" type="platformInfoType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="rented" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="platformInfoType">
+        <xs:sequence>
+            <xs:element name="platform" type="platformType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="platformType">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" />
+            <xs:element name="value" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
+
+
