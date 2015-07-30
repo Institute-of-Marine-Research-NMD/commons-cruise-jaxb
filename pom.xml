@@ -109,4 +109,16 @@
             </build>
         </profile>
     </profiles>
+    <scm>
+        <connection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</connection>
+        <url>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</url>
+        <developerConnection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <url>https://build.imr.no/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
 </project>
