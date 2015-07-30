@@ -12,6 +12,8 @@
     -->
     <xs:element name="cruises" type="CruisesType" />
 
+    <xs:element name="cruise" type="CruiseType" />
+
     <!--
             Cruises type.
     -->
