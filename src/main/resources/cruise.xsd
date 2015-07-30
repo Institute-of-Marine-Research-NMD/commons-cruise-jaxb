@@ -54,6 +54,20 @@
             <xs:element name="seaAreas" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="platformInfo" type="platformInfoType" minOccurs="1" maxOccurs="1"/>
             <xs:element name="rented" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="datasets" type="datasetsType" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="datasetsType">
+        <xs:sequence>
+            <xs:element name="dataset" type="datasetType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="datasetType">
+        <xs:sequence>
+            <xs:element name="dataType" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="collected" type="existsEnum" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
 
@@ -69,6 +83,14 @@
             <xs:element name="value" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="existsEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NO" />
+            <xs:enumeration value="YES" />
+            <xs:enumeration value="UNKNOWN" />
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
 
