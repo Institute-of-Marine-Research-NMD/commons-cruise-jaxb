@@ -6,5 +6,4 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified">
            <xs:import namespace="http://www.imr.no/formats/nmdcruise/v1" schemaLocation="cruisev1.xsd" />
-           <xs:import namespace="http://www.imr.no/formats/nmdcruise/v2" schemaLocation="cruisev2.xsd" />
 </xs:schema>

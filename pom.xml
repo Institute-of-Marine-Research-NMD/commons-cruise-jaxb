@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.imr.nmd.commons.cruise.jaxb</groupId>
     <artifactId>commons-cruise-jaxb</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>Commons - Cruise JaxB</name>
     <repositories>
@@ -42,7 +42,6 @@
                                         <directory>${basedir}/src/main/resources</directory>
                                         <includes>
                                             <include>cruisev1.xsd</include>
-                                            <include>cruisev2.xsd</include>
                                         </includes>
                                         <excludes>
                                             <exclude>*.*</exclude>
@@ -125,7 +124,7 @@
         <connection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</connection>
         <url>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</url>
         <developerConnection>scm:git:git@github.com:Institute-of-Marine-Research-NMD/commons-cruise-jaxb.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>commons-cruise-jaxb-1.0.2</tag>
     </scm>
     <distributionManagement>
         <repository>
