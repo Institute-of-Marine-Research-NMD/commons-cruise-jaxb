@@ -11,12 +11,14 @@
     This document is referenced from the pom and is used to change the generated classes.
     The following has been added. -->
     <jxb:bindings schemaLocation="../resources/cruisev1.xsd" node="/xs:schema">
-
+        <jxb:globalBindings>
+            <jxb:serializable uid="1" />
+        </jxb:globalBindings>
         <jxb:schemaBindings>
             <jxb:package name="no.imr.nmd.commons.cruise.jaxb" />
         </jxb:schemaBindings>
         <jxb:bindings>
-            <namespace:prefix name="ds" />
+            <namespace:prefix name="" />
         </jxb:bindings>
 
         <jxb:bindings node="//xs:complexType[@name='CruisesType']">

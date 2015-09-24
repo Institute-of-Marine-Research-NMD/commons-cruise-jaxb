@@ -58,6 +58,7 @@
                             <args>
                                 <arg>-Xannotate</arg>
                                 <arg>-Xnamespace-prefix</arg>
+                                <arg>-npa</arg>
                             </args>
                         </configuration>
                     </execution>
