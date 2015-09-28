@@ -68,7 +68,7 @@
 
     <xs:complexType name="datasetType">
         <xs:sequence>
-            <xs:element name="dataType" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="dataType" type="dataTypeEnum" minOccurs="1" maxOccurs="1" />
             <xs:element name="collected" type="existsEnum" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
@@ -87,10 +87,18 @@
     </xs:complexType>
 
     <xs:simpleType name="existsEnum">
-        <xs:restriction base="xs:string">
+        <xs:restriction base="xs:NMTOKEN">
             <xs:enumeration value="NO" />
             <xs:enumeration value="YES" />
             <xs:enumeration value="UNKNOWN" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="dataTypeEnum">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="BIOTIC"/>
+            <xs:enumeration value="CRUISE"/>
+            <xs:enumeration value="ECHOSOUNDER"/>
         </xs:restriction>
     </xs:simpleType>
 
