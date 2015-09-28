@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.imr.nmd.commons.cruise.jaxb</groupId>
     <artifactId>commons-cruise-jaxb</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Commons - Cruise JaxB</name>
     <repositories>
         <repository>
             <id>nexus-release</id>
             <name>Nexus release repository for IMR</name>
-            <url>http://javadev.imr.no:8081/nexus/content/repositories/releases/</url>
+            <url>http://build.imr.no/nexus/content/repositories/releases/</url>
         </repository>
         <repository>
             <id>repository.springsource.milestone</id>
@@ -49,7 +49,6 @@
                                     </fileset>
                                 </schema>
                             </schemas>
-                            <forceRegenerate>true</forceRegenerate>
                             <generateDirectory>${project.build.directory}/generated-sources/xjc</generateDirectory>
                             <verbose>true</verbose>
                             <bindingDirectory>${basedir}/src/main/bindings</bindingDirectory>
