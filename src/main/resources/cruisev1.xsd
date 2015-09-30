@@ -27,6 +27,7 @@
     <xs:complexType name="CruiseType">
         <xs:sequence>
             <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cruisePlanningSystemId" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="missiontype" type="xs:integer" minOccurs="1" maxOccurs="1"/>
             <xs:element name="startyear" type="xs:integer" minOccurs="1" maxOccurs="1"/>
@@ -39,7 +40,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
-                            <xs:attribute name="lang" type="xs:string" use="required"/>
+                            <xs:attribute name="lang" type="xs:language" use="required"/>
                         </xs:extension>
                     </xs:simpleContent>
                 </xs:complexType>
@@ -50,15 +51,72 @@
             <xs:element name="cruiseCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="beiCruiseNo" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="originalSurveyNo" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="cruiseLeader" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="departurePort" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="arrivalPort" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="seaAreas" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="seaAreas" type="seaAreasType" minOccurs="0" maxOccurs="1" />
             <xs:element name="platformInfo" type="platformInfoType" minOccurs="1" maxOccurs="1"/>
             <xs:element name="rented" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="persons" type="personsType" minOccurs="0" maxOccurs="1" />
             <xs:element name="datasets" type="datasetsType" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
+
+    <xs:complexType name="seaAreasType">
+        <xs:sequence>
+            <xs:element name="seaArea" type="seaAreaType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="seaAreaType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="missionStatusEnum">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="PLANNED" />
+            <xs:enumeration value="PERFORMED" />
+            <xs:enumeration value="CANCELLED" />
+            <xs:enumeration value="CREATED_IN_IMPORT" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="personsType">
+        <xs:sequence>
+            <xs:element name="person" type="personCruiseType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="personCruiseType">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="lastname" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="roles" type="rolesType" minOccurs="0" maxOccurs="1" />
+            <xs:element name="cabin" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="startDate" type="xs:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="stopDate" type="xs:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="confirmed" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rolesType">
+        <xs:sequence>
+            <xs:element name="role" type="roleEnum" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="specificRole" type="xs:string" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="roleEnum">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="CRUISELEADER" />
+            <xs:enumeration value="CRUISECOORDINATOR" />
+            <xs:enumeration value="PARTICIPANT" />
+            <xs:enumeration value="INSTRUMENT" />
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:complexType name="datasetsType">
         <xs:sequence>
@@ -81,10 +139,23 @@
 
     <xs:complexType name="platformType">
         <xs:sequence>
-            <xs:element name="type" type="xs:string" />
+            <xs:element name="type" type="platformTypeEnum" />
             <xs:element name="value" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="platformTypeEnum">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ITU_Call_Sign" />
+            <xs:enumeration value="ICES_Ship_Code"/>
+            <xs:enumeration value="IOC-NODC_Ship_Code"/>
+            <xs:enumeration value="WMO_Buoy_Identifier"/>
+            <xs:enumeration value="National-local_Identifier"/>
+            <xs:enumeration value="Norwegian_Fisheries_Register"/>
+            <xs:enumeration value="Ship_Name"/>
+            <xs:enumeration value="ARGO_Profiler"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:simpleType name="existsEnum">
         <xs:restriction base="xs:NMTOKEN">
