@@ -29,10 +29,10 @@
             <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="cruisePlanningSystemId" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="missiontype" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cruisetype" type="xs:integer" minOccurs="1" maxOccurs="1"/>
             <xs:element name="startyear" type="xs:integer" minOccurs="1" maxOccurs="1"/>
             <xs:element name="datapath" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="missionNumber" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cruiseNumber" type="xs:integer" minOccurs="1" maxOccurs="1"/>
             <xs:element name="startTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
             <xs:element name="stopTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
             <xs:element name="specificArea" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -47,7 +47,7 @@
             </xs:element>
             <xs:element name="comments" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="reportUrl" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="missionStatus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="cruiseStatus" type="cruiseStatusEnum" minOccurs="0" maxOccurs="1"/>
             <xs:element name="cruiseCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="beiCruiseNo" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="originalSurveyNo" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -74,8 +74,8 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="missionStatusEnum">
-        <xs:restriction base="xs:NMTOKEN">
+    <xs:simpleType name="cruiseStatusEnum">
+        <xs:restriction base="xs:token">
             <xs:enumeration value="PLANNED" />
             <xs:enumeration value="PERFORMED" />
             <xs:enumeration value="CANCELLED" />
