@@ -57,7 +57,7 @@
             <xs:element name="platformInfo" type="platformInfoType" minOccurs="1" maxOccurs="1"/>
             <xs:element name="rented" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
             <xs:element name="persons" type="personsType" minOccurs="0" maxOccurs="1" />
-            <xs:element name="datasets" type="datasetsType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="datasets" type="datasetsType" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
 
@@ -104,7 +104,13 @@
 
     <xs:complexType name="rolesType">
         <xs:sequence>
-            <xs:element name="role" type="roleEnum" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="role" type="roleType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="roleType">
+        <xs:sequence>
+            <xs:element name="rolename" type="roleEnum" minOccurs="1" maxOccurs="1" />
             <xs:element name="specificRole" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
